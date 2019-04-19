@@ -4,14 +4,14 @@ import os
 import json
 from utils import *
 from progressbar import *
-from hmmlearn import hmm
 import warnings
 
 class HmmPinyin:
     __eps=1e-12
-    def __init__(self,mat_file,maps_file):
+    def __init__(self,mat_file,maps_file,predictor="hmmlearn"):
         ensure_file_exists(mat_file)
         ensure_file_exists(maps_file)
+        self.predictor=predictor
         
         with open(maps_file,"r") as f:
             maps=json.load(f)
@@ -29,47 +29,85 @@ class HmmPinyin:
             mat=json.load(f)
         print_info("Mat loaded.")
         
-        startfreq=[mat["startfreq"][c] for c in chars]
-        sum_start=sum(startfreq)
-        startprob=np.array(list(map(lambda x:float(x)/sum_start,startfreq)))
-        emissionprob=np.zeros((n_chars,n_pinyins))
-        for i in range(n_chars):
-            c=chars[i]
-            ps=char2pinyin[c]
-            for p in ps:
-                emissionprob[i][pinyin2id[p]]=1.0/len(ps)
-        print_info("startprob&emissionprob constructed.")
+        # predictor initialization
+        if predictor=="hmmlearn":
+            from hmmlearn import hmm
+            startfreq=[mat["startfreq"][c] for c in chars]
+            sum_start=sum(startfreq)
+            startprob=np.array(list(map(lambda x:float(x)/sum_start,startfreq)))
+            emissionprob=np.zeros((n_chars,n_pinyins))
+            for i in range(n_chars):
+                c=chars[i]
+                ps=char2pinyin[c]
+                for p in ps:
+                    emissionprob[i][pinyin2id[p]]=1.0/len(ps)
+            print_info("startprob&emissionprob constructed.")
+            
+            word_freq=mat["words"]
+            print_info("Calculating char frequency...")
+            char_freq={c:0 for c in chars}
+            for word in ProgressBar()(word_freq):
+                char_freq[word[0]]+=word_freq[word]
+            
+            print_info("Construcing transmat...")
+            transmat=np.full((n_chars,n_chars),self.__eps)
+            for word in ProgressBar()(word_freq):
+                c1,c2=word[0],word[1]
+                transmat[char2id[c1]][char2id[c2]]=float(word_freq[word])/char_freq[c1]
+            for i in range(n_chars):
+                if transmat[i].sum()<0.5:
+                    transmat[i]=np.full((n_chars),1.0/n_chars)
+            
+            self.model=hmm.MultinomialHMM(n_components=n_chars)
+            self.model.startprob_=startprob
+            self.model.transmat_=transmat
+            self.model.emissionprob_=emissionprob
+            print_info("model constructed.")
+            
+            warnings.filterwarnings("ignore")
+        else:
+            print_info("No predictor called {}.".format(predictor))
+            exit()
         
-        word_freq=mat["words"]
-        print_info("Calculating char frequency...")
-        char_freq={c:0 for c in chars}
+        # segmentor initialization
+        from pinyinseg import PinyinSeg
+        pinyin_grams={(i,j):0 for i in pinyins for j in pinyins}
         for word in ProgressBar()(word_freq):
-            char_freq[word[0]]+=word_freq[word]
+            for p1 in char2pinyin[word[0]]:
+                for p2 in char2pinyin[word[1]]:
+                    pinyin_grams[(p1,p2)]+=word_freq[word]
         
-        print_info("Construcing transmat...")
-        transmat=np.full((n_chars,n_chars),self.__eps)
-        for word in ProgressBar()(word_freq):
-            c1,c2=word[0],word[1]
-            transmat[char2id[c1]][char2id[c2]]=float(word_freq[word])/char_freq[c1]
-        for i in range(n_chars):
-            if transmat[i].sum()<0.5:
-                transmat[i]=np.full((n_chars),1.0/n_chars)
+        pinyin_startprob={i:0 for i in pinyins}
+        for p in pinyins:
+            for c in pinyin2chars[p]:
+                pinyin_startprob[p]+=mat["startfreq"][c]
+        self.segmentor=PinyinSeg(pinyins=pinyins,grams=pinyin_grams,startprob=pinyin_startprob)
+        print_info("Segmentor constructed.")
         
-        self.model=hmm.MultinomialHMM(n_components=n_chars)
-        self.model.startprob_=startprob
-        self.model.transmat_=transmat
-        self.model.emissionprob_=emissionprob
-        print_info("model constructed.")
-        
-        warnings.filterwarnings("ignore")
         print_info("HmmPinyin constructed!! Have fun!!")
-    def predict(self,st):
-        arr=st.replace("'"," ").split(" ")
-        try:
-            pinyin_seq=list(map(lambda p:self.pinyin2id[p],arr))
-        except:
-            print_info("Error! Invalid pinyin input!")
-            return "Invalid input"
-        # logprob,res_seq=self.model.decode(np.array([pinyin_seq]).T, algorithm="viterbi")
-        res_seq=self.model.predict(np.array([pinyin_seq]).T)
-        return ''.join(list(map(lambda id:self.chars[id],res_seq)))
+    def predict_valid_seq(self,seq):
+        if not seq:
+            return ""
+        if self.predictor=="hmmlearn":
+            res_seq=self.model.predict(np.array([seq]).T)
+            return ''.join(list(map(lambda id:self.chars[id],res_seq)))
+    def predict(self,st,need_segmentation=False):
+        seged=False
+        if need_segmentation or st.find(" ")==-1:
+            arr=self.segmentor.segment(st)
+            seged=True
+        else:
+            arr=st.replace("'"," ").split(" ")
+        
+        seq=[]
+        ret=""
+        for p in arr:
+            if p in self.pinyins:
+                seq.append(self.pinyin2id[p])
+            else:
+                if not seged:
+                    return self.predict(st,need_segmentation=True)
+                ret+=self.predict_valid_seq(seq)+p
+                seq=[]
+        ret+=self.predict_valid_seq(seq)
+        return ret
