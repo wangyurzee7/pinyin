@@ -4,31 +4,16 @@ import sys
 import os
 import json
 import numpy as np
-
-def ensure_file_exists(file_name):
-    if (not os.path.exists(file_name)) or (not os.path.isfile(file_name)):
-        print("File '{}' not found!".format(file_name))
-        exit()
-
-def ensure_dir_exists(dir_path):
-    if (not os.path.exists(dir_path)) or os.path.isfile(dir_path):
-        print("Dir '{}' not found!".format(dir_path))
-        exit()
-
-__capital='aeiou'
-def starts_with_capital(st):
-    for c in __capital:
-        if st.startswith(c):
-            return True
-    return False
+import chardet
+from utils import *
 
 def read_chars(file_name):
-    with open(file_name,"r",encoding="gbk") as f:
+    with open(file_name,"r",encoding=get_encoding(file_name)) as f:
         lst=list(''.join(f.readlines()))
         return lst,{c:id for id,c in enumerate(lst)}
 
 def read_pinyins(file_name):
-    with open(file_name,"r",encoding="gbk") as f:
+    with open(file_name,"r",encoding=get_encoding(file_name)) as f:
         lst=[]
         pinyin2chars={}
         char2pinyin={}
@@ -59,20 +44,19 @@ def get_sentences(content):
             cur_s=""
     return sentences
 
-def work(list_file,chars,char2id,pinyins,pinyin2id,pinyin2chars,char2pinyin):
-    with open(list_file,"r") as f:
+def work(list_file,chars,char2id,pinyins,pinyin2id,pinyin2chars,char2pinyin,threshold):
+    with open(list_file,"r",encoding=get_encoding(list_file)) as f:
         char_cnt=len(chars)
         pinyin_cnt=len(pinyins)
         ret={}
         ret["words"]={}
         ret["pinyins"]={}
         ret["startfreq"]={c:0 for c in chars}
-        file_list=f.readlines()
-        for file in file_list:
-            file=file.replace('\r','').replace('\n','')
-            ensure_file_exists(file)
-            with open(file,"r") as f:
-                print(" - Treating file '{}'".format(file))
+        for file_name in f.readlines():
+            file_name=file_name.replace('\r','').replace('\n','')
+            ensure_file_exists(file_name)
+            with open(file_name,"r",encoding=get_encoding(file_name)) as f:
+                print(" - Treating file '{}'".format(file_name))
                 for line in f.readlines():
                     try:
                         content=json.loads(line)["html"]
@@ -86,10 +70,26 @@ def work(list_file,chars,char2id,pinyins,pinyin2id,pinyin2chars,char2pinyin):
                             if not word in ret["words"]:
                                 ret["words"][word]=0
                             ret["words"][word]+=1
-                        cur=[[]]
                         ret["startfreq"][s[0]]+=1
                         # TODO: something with ret["pinyins"]
+        _cnt={}
+        for word in ret["words"]:
+            cur_freq=ret["words"][word]
+            for p1 in char2pinyin[word[0]]:
+                for p2 in char2pinyin[word[1]]:
+                    if not (p1,p2) in _cnt:
+                        _cnt[(p1,p2)]=0
+                    _cnt[(p1,p2)]+=cur_freq
+        for word in ret["words"]:
+            cur_freq=ret["words"][word]
+            valid=False
+            for p1 in char2pinyin[word[0]]:
+                for p2 in char2pinyin[word[1]]:
+                    valid=valid or cur_freq>=_cnt[(p1,p2)]*threshold
+            if not valid:
+                ret["words"].pop(word)
         return ret
+    
 
 if __name__=='__main__':
     if (len(sys.argv)<4):
@@ -122,8 +122,20 @@ if __name__=='__main__':
     if len(chars)!=len(char2pinyin):
         print("Num of char in pinyin table and dict does not match")
     
-    prepare_res=work(doc_list,chars,char2id,pinyins,pinyin2id,pinyin2chars,char2pinyin)
+    prepare_res=work(doc_list,chars,char2id,pinyins,pinyin2id,pinyin2chars,char2pinyin,ignore_t)
     tw="中国" # test word
     print("All docs read. [ Test: count of word '{}' is {} ]".format(tw,prepare_res["words"][tw]))
     
-    # dump_result(res_path,prepare_res,ignore_t)
+    maps={}
+    maps["chars"]=chars
+    maps["char2id"]=char2id
+    maps["pinyins"]=pinyins
+    maps["pinyin2id"]=pinyin2id
+    maps["pinyin2chars"]=pinyin2chars
+    maps["char2pinyin"]=char2pinyin
+    
+    with open(res_path+"/mat.json","w") as f:
+        json.dump(prepare_res,f)
+    with open(res_path+"/maps.json","w") as f:
+        json.dump(maps,f)
+    print("Dumped.")
