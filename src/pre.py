@@ -1,10 +1,7 @@
 # usage: python3 pre.py [char_file] [map_file] [doc_list] [result_path='./'] [ignore_threshold=0]
-
 import sys
 import os
 import json
-import numpy as np
-import chardet
 from utils import *
 from progressbar import *
 
@@ -57,7 +54,7 @@ def work(list_file,chars,char2id,pinyins,pinyin2id,pinyin2chars,char2pinyin,thre
             file_name=file_name.replace('\r','').replace('\n','')
             ensure_file_exists(file_name)
             with open(file_name,"r",encoding=get_encoding(file_name)) as f:
-                print(" - Treating file '{}'".format(file_name))
+                print_info(" - Treating file '{}'".format(file_name))
                 lines=f.readlines()
                 bar=ProgressBar()
                 for i in bar(range(len(lines))):
@@ -96,7 +93,7 @@ def work(list_file,chars,char2id,pinyins,pinyin2id,pinyin2chars,char2pinyin,thre
 
 if __name__=='__main__':
     if (len(sys.argv)<4):
-        print("Too Few Arguments.")
+        print_info("Too Few Arguments.")
         exit()
     char_file=sys.argv[1]
     map_file=sys.argv[2]
@@ -104,12 +101,12 @@ if __name__=='__main__':
     try:
         res_path=sys.argv[4]
     except:
-        print("Result path not read. Set to './' by default.")
+        print_info("Result path not read. Set to './' by default.")
         res_path='./'
     try:
         ignore_t=float(sys.argv[5])
     except:
-        print("Ignore threshold not read(or not a float). Set to 0 by default.")
+        print_info("Ignore threshold not read(or not a float). Set to 0 by default.")
         ignore_t=0
     ensure_file_exists(char_file)
     ensure_file_exists(map_file)
@@ -117,17 +114,17 @@ if __name__=='__main__':
     ensure_dir_exists(res_path)
     
     chars,char2id=read_chars(char_file)
-    print("Char list read. [ Count of char = {} ]".format(len(chars)))
+    print_info("Char list read. [ Count of char = {} ]".format(len(chars)))
     
     pinyins,pinyin2id,pinyin2chars,char2pinyin=read_pinyins(map_file)
-    print("Pinyin map read. [ Count of pinyin = {} ]".format(len(pinyins)))
+    print_info("Pinyin map read. [ Count of pinyin = {} ]".format(len(pinyins)))
     
     if len(chars)!=len(char2pinyin):
-        print("Num of char in pinyin table and dict does not match")
+        print_info("Num of char in pinyin table and dict does not match")
     
     prepare_res=work(doc_list,chars,char2id,pinyins,pinyin2id,pinyin2chars,char2pinyin,ignore_t)
     tw="中国" # test word
-    print("All docs read. [ Test: count of word '{}' is {} ]".format(tw,prepare_res["words"][tw]))
+    print_info("All docs read. [ Test: count of word '{}' is {} ]".format(tw,prepare_res["words"][tw]))
     
     maps={}
     maps["chars"]=chars
@@ -141,4 +138,4 @@ if __name__=='__main__':
         json.dump(prepare_res,f)
     with open(res_path+"/maps.json","w") as f:
         json.dump(maps,f)
-    print("Dumped.")
+    print_info("Dumped.")

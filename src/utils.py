@@ -1,7 +1,6 @@
 import sys
 import os
 import json
-import numpy as np
 import chardet
 
 def ensure_file_exists(file_name):
@@ -32,3 +31,6 @@ def get_encoding(file_name):
             return e
     print("Error!!! unknown encoding used in file '{}'".format(file_name))
     exit()
+
+def print_info(info):
+    sys.stdout.write(str(info)+"\n")
