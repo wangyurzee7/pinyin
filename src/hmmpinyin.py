@@ -55,7 +55,7 @@ class HmmPinyin:
             if transmat[i].sum()<0.5:
                 transmat[i]=np.full((n_chars),1.0/n_chars)
         
-        self.model=hmm.MultinomialHMM(n_components,n_chars)
+        self.model=hmm.MultinomialHMM(n_components=n_chars)
         self.model.startprob_=startprob
         self.model.transmat_=transmat
         self.model.emissionprob_=emissionprob

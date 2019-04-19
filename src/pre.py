@@ -73,6 +73,7 @@ def work(list_file,chars,char2id,pinyins,pinyin2id,pinyin2chars,char2pinyin,thre
                         ret["startfreq"][s[0]]+=1
                         # TODO: something with ret["pinyins"]
         _cnt={}
+        words=[]
         for word in ret["words"]:
             cur_freq=ret["words"][word]
             for p1 in char2pinyin[word[0]]:
@@ -80,7 +81,8 @@ def work(list_file,chars,char2id,pinyins,pinyin2id,pinyin2chars,char2pinyin,thre
                     if not (p1,p2) in _cnt:
                         _cnt[(p1,p2)]=0
                     _cnt[(p1,p2)]+=cur_freq
-        for word in ret["words"]:
+            words.append(word)
+        for word in words:
             cur_freq=ret["words"][word]
             valid=False
             for p1 in char2pinyin[word[0]]:
