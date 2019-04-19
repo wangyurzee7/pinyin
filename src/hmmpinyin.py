@@ -8,7 +8,7 @@ import warnings
 
 class HmmPinyin:
     __eps=1e-12
-    def __init__(self,mat_file,maps_file,predictor="hmmlearn"):
+    def __init__(self,mat_file,maps_file,predictor="yazidhmm"):
         ensure_file_exists(mat_file)
         ensure_file_exists(maps_file)
         self.predictor=predictor
@@ -27,6 +27,7 @@ class HmmPinyin:
         
         with open(mat_file,"r") as f:
             mat=json.load(f)
+        word_freq=mat["words"]
         print_info("Mat loaded.")
         
         # predictor initialization
@@ -43,7 +44,6 @@ class HmmPinyin:
                     emissionprob[i][pinyin2id[p]]=1.0/len(ps)
             print_info("startprob&emissionprob constructed.")
             
-            word_freq=mat["words"]
             print_info("Calculating char frequency...")
             char_freq={c:0 for c in chars}
             for word in ProgressBar()(word_freq):
@@ -65,6 +65,13 @@ class HmmPinyin:
             print_info("model constructed.")
             
             warnings.filterwarnings("ignore")
+        elif predictor=="yazidhmm":
+            from yazidhmm import YazidHmm
+            pid2cids=[list(map(lambda c:char2id[c],pinyin2chars[pinyins[pid]])) for pid in range(n_pinyins)]
+            idmat={(char2id[w[0]],char2id[w[1]]):word_freq[w] for w in ProgressBar()(word_freq)}
+            idstartprob=[mat["startfreq"][chars[cid]] for cid in range(n_chars)]
+            self.model=YazidHmm(pid2cids,idmat,idstartprob)
+            print_info("model constructed.")
         else:
             print_info("No predictor called {}.".format(predictor))
             exit()
@@ -89,8 +96,9 @@ class HmmPinyin:
         if not seq:
             return ""
         if self.predictor=="hmmlearn":
-            res_seq=self.model.predict(np.array([seq]).T)
-            return ''.join(list(map(lambda id:self.chars[id],res_seq)))
+            seq=np.array([seq]).T
+        res_seq=self.model.predict(seq)
+        return ''.join(list(map(lambda id:self.chars[id],res_seq)))
     def predict(self,st,need_segmentation=False):
         seged=False
         if need_segmentation or st.find(" ")==-1:
