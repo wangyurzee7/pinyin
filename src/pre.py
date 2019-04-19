@@ -6,6 +6,7 @@ import json
 import numpy as np
 import chardet
 from utils import *
+from progressbar import *
 
 def read_chars(file_name):
     with open(file_name,"r",encoding=get_encoding(file_name)) as f:
@@ -57,9 +58,11 @@ def work(list_file,chars,char2id,pinyins,pinyin2id,pinyin2chars,char2pinyin,thre
             ensure_file_exists(file_name)
             with open(file_name,"r",encoding=get_encoding(file_name)) as f:
                 print(" - Treating file '{}'".format(file_name))
-                for line in f.readlines():
+                lines=f.readlines()
+                bar=ProgressBar()
+                for i in bar(range(len(lines))):
                     try:
-                        content=json.loads(line)["html"]
+                        content=json.loads(lines[i])["html"]
                     except:
                         continue
                     sentences=get_sentences(content)
