@@ -1,7 +1,7 @@
 import sys
 import os
 import json
-from . import utils
+from utils import *
 from progressbar import *
 import math
 import numpy as np
