@@ -1,33 +1,3 @@
-sui ran yi jing jie jue le jian li xin ji fen fang fa de shou yao wen ti
-jian li le jiao yi ban ji shang de ce du li lun
-hou mian wo men jiang cheng ju you zhe zhong xing zhi de han shu wei ke ce han shu
-xia mian yin ru ke ce han shu de gai nian
-ke ce han shu de you xian ke jia xing
-ji hu chu chu shou lian han shu lie de kong zhi shou lian ding li
-zheng ming ji fen yu ji xian jiao huan shun xu
-zai ju yi xie kong zhi shou lian ding li de ying yong
-du zhe zi ji ye ke yi lie ju bing jia yi zheng ming
-suo yi zhe liang ge han shu ji hu chu chu xiang deng
-jin tian ye shi hao tian qi
-you zai tou lan ma
-ni hui gai ba
-wang dao zheng tu
-bu cun zai de
-wei yi zhi ding you xiang
-xiang xiang ji
-zhi dao ni de xi wang xi mie wei zhi
-fei chang xin xian fei chang mei wei
-yi fei chong tian a wo
-jin tian ye shi hao tian qi
-you zai tou lan ma
-ni hui gai ba
-wang dao zheng tu
-bu cun zai de
-wei yi zhi ding you xiang
-xiang xiang ji
-zhi dao ni de xi wang xi mie wei zhi
-fei chang xin xian fei chang mei wei
-yi fei chong tian a wo
 zhe jiu shi wo men de qi ji
 ru guo qi ji you yan se na yi ding shi cheng se
 dong xian sheng lian ren hao bu hao a
@@ -78,7 +48,7 @@ bei jing ao yun hui kai mu shi fei chang jing cai
 quan guo ren min dai biao da hui zai bei jing ren min da hui tang long zhong zhao kai
 jin yong de wu xia xiao shuo fei chang jing cai
 ni de shi jie hui bian de geng jing cai
-shen du xue xi ji shu tui dong le ren gong zhi neng de fa zhan 
+shen du xue xi ji shu tui dong le ren gong zhi neng de fa zhan
 zai tian an men guang chang ju xing le long zhong de yue bing shi
 luo ji dai shu you xie chang yong de ji ben gong shi
 qing da jia xuan ze ni jue de ke yi de shi jian
@@ -135,7 +105,7 @@ xian yi jia ru ken de ji hao hua wu can
 wo cong wei jian guo you ru ci hou yan wu chi zhi ren
 wo shi shuo zai zuo de ge wei dou shi la ji
 chen qie zuo bu dao a
-ben zhan li zu yu mei li jian he zhong guo dui quan qiu hua ren fu wu shou bei mei fa lv bao hu
+ben zhan li zu yu mei li jian he zong guo dui quan qiu hua ren fu wu shou bei mei fa lv bao hu
 ni men cheng li ren zhen hui wan
 xiang yao yi zhi ai zhe mou wu de hua
 yi yao guai zhi si lai shuo tai chang le
@@ -183,14 +153,13 @@ qu zao li le kou na qin xian hai chan zhe
 yuan wo men jiao xing bei ji de
 shui neng ji de
 wo wei cheng zhi wei bi ran xiang qiao he zhi qian
-tang ruo you ren he miu wu zhi chu wo bi ran zhi qian
+tang ruo you ren he miu wu zhi chu wo xiang bi ran zhi qian
 dan yuan kuai le bu hui yin wo shi qi wei ji you er sheng qi
 dan yuan si zhe nai xin bao rong wo zhu jian shuai tui de ji yi
 wo wei zi ji fen fen miao miao shu lou wan wu xiang shi jian zhi qian
 wo wei jiang xin huan shi wei chu lian xiang jiu ai zhi qian
 yuan fang de zhan zheng a yuan liang wo dai hua hui jia
 lie kai de shang kou a yuan liang wo zha dao shou zhi
-o yan yu bie guai wo jie yong le chen zhong de zi yan
 you lao xin fei shen de shi ta men kan si qing song
 bei jing de fang jia shi fou zai tou zhi nian qing ren de chuang zao li
 ren wei shen me yao shui jiao
@@ -201,14 +170,14 @@ pei yang le jian ding de yi zhi mo lian le zi ji de yong qi
 zou chu qing hua da xue te se de shi jie yi liu da xue dao lu
 qing dian ji xia mian de lian jie
 shu xue fen xi ben shen jiu shi nan xue de
-qian chu le bu neng qi si hui sheng zhi wai shi wan neng de
+qian  chu le bu neng qi si hui sheng zhi wai shi wan neng de
 zi dong hua he jing guan shu yu tong yi ge zhao sheng da lei
 wo shuo zhe ba you xi yi jing jie shu le
 xin guan zhong ke neng bu xiang xin
 wo jia zhu zai huang tu gao po
 wo shi mai bao de xiao hang jia
 mao shi zui meng de dong wu
-fu wang zhan si sha chang
+wu wang zhan si sha chang
 jin zi shi you liang de dao ti
 zhe ge di fang hao xiang ke yi liao tian ne
 jin ru bai xue xian chang
@@ -267,7 +236,7 @@ jun bu jian huang he zhi shui tian shang lai
 an de guang sha qian wan jian
 ni hui wan zhe wo de yi xiu
 wo hui ba shou chuai jin ku dou
-nan fang de xiao zhen yin yu de dong tian mei you bei fang leng
+nan fan de xiao zhen yin yu de dong tian mei you bei fang leng
 ta shi wo de fu qin
 ta shi wo de mu qin
 ta shi wo de gou gou
@@ -283,7 +252,7 @@ ma shao ping lao shi ru shi shuo
 gong xiang dan che zhan xian le ren men de dao de su zhi
 zhe xie zhao pian kan le zhi hou hui dian fu ni de san guan
 wo zhen de hao xiang zai huo wu bai nian
-ru guo zu guo shou dao le qin fan
+ru guo zu guo chou dao le qin fan
 re xue nan er dang zi qiang
 he wan le zhe bei jia xiang de jiu
 zhuang shi yi qu bu fu fan
@@ -331,7 +300,7 @@ ming tian zao qi
 jie tian lian ye wu qiong bi
 xiao he cai lu jian jian jiao
 qing hua da xue hen bang bang o
-yu xi zai shou tian xia wo you
+yu xi zai shou tian xia  wo you
 dan shi long cheng fei jiang zai
 chun feng bu du yu men guan
 mao ze dong si xiang yu she hui zhu yi gai lun
@@ -392,7 +361,6 @@ chui a chui a wo de jiao ao fang zong
 hai cha liang ju jiu wan le ha ha ha
 wo cong ya bian die luo meng men he gu jin suo
 zuo wei meng he zui
-ri shen he jiu shen shi zi ran jie zhi jie de yi shu chong dong
 xi la ren de zao xing neng li zhi wan mei
 shi wo men you li you ba zuo meng de xi la ren kan cheng xu duo de he ma
 you ba he ma kan zuo yi ge zuo meng de xi la ren
@@ -406,7 +374,6 @@ yi meng wei ma
 gai shu de yao shu a
 dao di hai cha duo shao a
 zhen de hen nan xie you mei you
-diu lei lou mou
 zheng zai qian wang nu ba ni
 bei hai gong yuan nan zhen hao wan
 ruo xiao he wu zhi bu shi sheng cun de zhang ai
@@ -433,7 +400,7 @@ guo jia tu shu guan zhan shi huan cheng che zhan
 shang che de cheng ke qing wang li zou
 qing xie dai hao sui shen de xing li wu pin
 gan xie nin xuan ze bei jing di tie chu xing
-huan ying nin zai ci cheng zuo di tie liu hao xian lie che
+huan ying nin zai ci cheng zuo di tie si hao xian lie che
 cheng che guo cheng zhong qing zuo wen fu hao bu yao shou fu che men
 qing zai ping bi men wan quan da kai hou cong you ce xia che
 qing zhu yi huan cheng lie che de shou mo ban che shi jian
@@ -465,7 +432,7 @@ sui feng qian ru ye run wu xi wu sheng
 wo shi ge zha zha
 you xian zhuang tai zi dong ji
 zhu ti tuan ri zen me ban
-juan ji shen jing wang luo yong yu yi liao ying xiang shi bie
+juan ji shen jing wang luo yong yu li liao ying xiang shi bie
 yin wei ni ren pin tai cha
 gou jian she hui zhu yi he xie she hui
 mu ke hai mei kan wan
@@ -486,11 +453,10 @@ an lao sun qu ye
 wo hu han san you hui lai le
 bu cai luo po jing nian
 ni jin guan ma dai ma
-neng zheng que shu chu suan wo shu
+neng shu zheng que chu suan wo shu
 qiu tian hong se de xi gai gui zai di shang
 xiao hua si zai hui jia de lu shang
 lei shui da shi ge zi de hou nao shao
-zui hou zhu ni shen ti jian kang
 lao si ji dai dai wo
 ting shuo ni zuo tian wan shang qu kan dian ying le
 he wo zai cheng du de jie tou zou yi zou
@@ -500,7 +466,7 @@ shi er hao wan jia fa yan
 shi er hao wan jia shi yu yan jia
 zuo tian wan shang yi hao wan jia shi wo de jin shui
 ba hao wan jia ni yi jing liao bao le
-ming tian wan shang wo hui yan ming si hao wan jia de shen fen
+ming tian wan shang wo hui yan si hao wan jia de shen fen
 xi wang suo you de hao ren xiang xin wo
 zhi yao xiang qi yi sheng zhong hou hui de shi
 mei hua bian luo le xia lai
@@ -544,7 +510,7 @@ da bai cai ji mao cai tong xin cai you mai cai
 wang bu liu xing jun qian li
 jiu jiu ba shi yi
 ji ben qing kuang jiu shi zhe yang le
-yi shan yi shan liang jing jing
+yi shang yi shang liang jing jing
 xiao ye wo ke xi huan ren lei le
 huo jiu le shen me dou neng jian dao
 you shi chong shi de yi tian a
@@ -596,7 +562,7 @@ wo hai yao zai bian chu san ge ju zi
 bu zhi dao ru guo you duo yin zi hui bu hui zeng jia nan du
 ce shi yang li ji
 zhong ting di bai shu qi ya
-ben huan tan tan jian jian neng neng fou fou ding ding lun yi huo ding lv er
+ben huan tan tan jian jian neng neng fou fou ding ding lun yi huo ding lun er
 zhe shi wo bian de di yi ge ju zi
 gang gang yi jing bian guo yi ju hua le
 mao si cai gang kai shi
@@ -675,6 +641,8 @@ ren yu ren zhi jian de xin ren zai na li
 ren yu ren zhi jian zui ji ben de xin ren ne
 ni jin guan fen lei zhe shi ju hua fen dui le suan wo shu
 lin ze xu you yi ju ming yan ya
+gou li guo jia sheng si yi
+qi yin huo fu bi qu zhi
 wo dao he bei sheng lai
 fang ai zan de zha zha
 ni men zhe shi zi xun si lu
@@ -687,11 +655,9 @@ he gu luan fan shu
 shi bu sha yi ren qian li bu liu xing
 ben zhan ji zhe pao de kuai
 jing sou hu da sha ye xian shi ren ling ti
-xi wen sou hu da sha jiang kai fang chuan shuo chong wu wa si dan
 sou hu you xi xie pai ke meng jing ling tui chu xin chong chou chou hua
 nin de hao you miao xing ren cheng gong bu huo le li yu wang
 nin de chong wu miao miao xiang chi diao ye sheng de bi ka qiu
-nin zhe ge ren er da gai xi huan zhao xiang
 qing hua da xue jie fang yan yu xing dong
 zan wo bi chu ci mu
 da ai luo tian yi
@@ -760,38 +726,45 @@ san yue san shi er ri shi xing qi yi
 wei xin xiao cheng xu chong xin fa ming le liu lan qi
 bi mian di san ci shi jie da zhan de fa sheng
 ping guo gong si ji jiang tui chu yi kuan an zhuo shou ji
-tong guo ji yin gong cheng zhi zao mao niang shi ke xing de
+tong guo ji yin gong cheng zhi zhao mao niang shi ke xing de
 da kuo hao hou mian ying bu ying gai huan hang yi zhi yi lai dou shi you zheng yi de
 yi ge dan zi shuo bai le bu guo jiu shi zi han zi fan chou shang de yi ge yao ban qun er yi
 qing wen ni yao lai dian tu zi ma
 bu xing zhui wei le hei se de gao ji che
-mei xi shi shi jie shang zui hao de zu qiu yun dong yuan
-wang bu chuan zhe ai mei de yan
-nan dao wo zhe ci bao jin ni wei bi luo kong
-ye xu ni hui pei wo kan xi shui chang liu
-wo jiang bu gu yi qie de lai dao zhe di fang
-shou xin hu ran zhang chu jiu chan de qu xian
-neng chong feng qian du zong you quan du ji
-jie le dong xi wei shen me bu huan
-duan chang sheng dian dian feng yu sheng lian lian si shi gu ren lai
-feng hua xue yue bu ken deng ren yao xian bian xian wen
-wo xi huan bei da de xue mei
-wo jia qi yao qu hang zhou wan
-hua xie hua fei hua man tian
-hong xiao xiang duan you shui lian
-you si ruan xi piao chun xie
-luo xu qing zhan pu xiu lian
-gui zhong nv er xi chun mu
-hong lou meng hao xiang tai nan le
-wo xiang qu pao ban ma
-jin tian kong qi hao bu hao
+wo de mo fa hui ba ni si cheng sui pian
+wo yao fen sui ni
+mo xiang shi nv hai zui hao de peng you
+lun dao wo shang chang le
+lai he fu wang jue dou ba
+fu wang bian cheng zhu le ma
+sheng bo ce liang de fang fa hen duo
+zai ben shi yan zhong cai yong de fang fa shi mai chong bo fan she fa
+mai chong bo shi you bu tong pin lv cheng fen de lian xu bo he cheng
+huo zhe shuo mai chong bo bao han you bu tong cheng fen de lian xu bo
+dang hai feng chui liang ni hong
+hui shou ni wu ying zong
+zhuan yan jiu meng yi cheng kong
+shang ye se qian jia meng long
+feng hua xue yue ru meng
+ti xing wo ye ceng ai guo
 qi yi de guang mang chong man le fang jian
 mu guang shan shuo zhe chuan guo le jie jie
 ni de lv tu zhong yu di da zhong dian
 ni xian zai chong man le jue xin
-wo bu zhi dao qian mian de ren wei shen me da de ju zi dou na me qi guai
-zhe bu shi yi tiao sou gou shu ru fa dou da bu chu lai de ju zi
-ye du shou hui tian xia
-ha ha ha ha ha ha
-lin xian sheng fa feng le
-shi bu shi yi hou ke yi yong zhe ge dong xi liao tian
+ming tian fang jia
+xue xi shi wo nan guo
+men sheng fa da cai
+jin ye wu mian
+ling chen si dian de tian an men
+hao jiu bu jian
+nan hai bu shi hai
+hong yan jing de ren
+bu yao shuo hua
+bu cun zai de
+wo xiang qu xi zang
+yan yan yan yan yan yan yan
+zhe yao shi nong bu si ni wo ye shi mei zhe le
+da jia neng bu neng bu yao shu ru zhe me duo qi guai de yu ju
+bi ru fang yan
+chun feng you lv jiang nan an
+ma fan ni men xie ju zi de shi hou jian cha yi xia pin yin he han zi neng bu neng dui ying
