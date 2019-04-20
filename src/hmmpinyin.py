@@ -8,7 +8,11 @@ import warnings
 
 class HmmPinyin:
     __eps=1e-12
-    def __init__(self,mat_file,maps_file,predictor="yazidhmm"):
+    def __init__(self,model_path="data/model/",mat_file=None,maps_file=None,predictor="yazidhmm"):
+        if not mat_file:
+            mat_file=model_path+"/mat.json"
+        if not maps_file:
+            maps_file=model_path+"/maps.json"
         ensure_file_exists(mat_file)
         ensure_file_exists(maps_file)
         self.predictor=predictor

@@ -27,7 +27,7 @@ if __name__=="__main__":
     if len(sys.argv)>2:
         ofile=open(sys.argv[2],"w")
 
-    py=HmmPinyin("./data/model/mat.json","./data/model/maps.json")
+    py=HmmPinyin(model_path="./src/data/model/")
     st=__input()
     while st:
         __output(py.predict(st))
