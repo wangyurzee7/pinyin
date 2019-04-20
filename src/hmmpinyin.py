@@ -2,7 +2,8 @@ import numpy as np
 import sys
 import os
 import json
-from utils import *
+# from utils import *
+from . import utils
 from progressbar import *
 import warnings
 
