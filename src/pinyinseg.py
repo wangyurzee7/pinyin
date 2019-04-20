@@ -59,7 +59,7 @@ class PinyinSeg:
                     last_p=st[i-k-l:i-k]
                     tmp=dp[i-k][l]
                     if not cur_p in self.pinyins:
-                        tmp+=self.__log_eps*2
+                        tmp+=self.__log_eps*2+k*self.__half_log_eps/2
                         # print("log_eps*2={}".format(self.__log_eps*2))
                     elif l==0 or not last_p in self.pinyins:
                         tmp+=self.startprob[cur_p]
