@@ -1,7 +1,7 @@
-from hmmpinyin import *
+from src.hmmpinyin import *
 import sys
 import os
-from utils import *
+from src.utils import *
 
 
 ifile=None
@@ -25,9 +25,9 @@ if __name__=="__main__":
         ensure_file_exists(ifile)
         ifile=open(ifile,"r")
     if len(sys.argv)>2:
-        ofile=open(sys.argv[2])
+        ofile=open(sys.argv[2],"w")
 
-    py=HmmPinyin("../data/model/mat.json","../data/model/maps.json")
+    py=HmmPinyin("./data/model/mat.json","./data/model/maps.json")
     st=__input()
     while st:
         __output(py.predict(st))

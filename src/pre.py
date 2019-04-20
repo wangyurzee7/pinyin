@@ -2,7 +2,7 @@
 import sys
 import os
 import json
-from utils import *
+from .utils import *
 from progressbar import *
 
 def read_chars(file_name):

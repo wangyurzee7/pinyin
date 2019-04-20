@@ -2,7 +2,7 @@ import numpy as np
 import sys
 import os
 import json
-from utils import *
+from .utils import *
 from progressbar import *
 import warnings
 
@@ -66,7 +66,7 @@ class HmmPinyin:
             
             warnings.filterwarnings("ignore")
         elif predictor=="yazidhmm":
-            from yazidhmm import YazidHmm
+            from .yazidhmm import YazidHmm
             pid2cids=[list(map(lambda c:char2id[c],pinyin2chars[pinyins[pid]])) for pid in range(n_pinyins)]
             idmat={(char2id[w[0]],char2id[w[1]]):word_freq[w] for w in ProgressBar()(word_freq)}
             idstartprob=[mat["startfreq"][chars[cid]] for cid in range(n_chars)]
@@ -77,7 +77,7 @@ class HmmPinyin:
             exit()
         
         # segmentor initialization
-        from pinyinseg import PinyinSeg
+        from .pinyinseg import PinyinSeg
         pinyin_grams={(i,j):0 for i in pinyins for j in pinyins}
         for word in ProgressBar()(word_freq):
             for p1 in char2pinyin[word[0]]:
