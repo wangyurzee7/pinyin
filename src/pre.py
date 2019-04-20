@@ -1,4 +1,4 @@
-# usage: python3 pre.py [char_file] [map_file] [doc_list] [result_path='./'] [ignore_threshold=1.0] [add=0]
+# usage: python3 pre.py [char_file] [map_file] [doc_list] [result_path] [ignore_threshold=1.0] [add=0]
 import sys
 import os
 import json
@@ -106,17 +106,13 @@ def filt_few(ret,threshold=1.0):
     return ret
 
 if __name__=='__main__':
-    if (len(sys.argv)<4):
+    if (len(sys.argv)<5):
         print_info("Too Few Arguments.")
         exit()
     char_file=sys.argv[1]
     map_file=sys.argv[2]
     doc_list=sys.argv[3]
-    try:
-        res_path=sys.argv[4]
-    except:
-        print_info("Result path not read. Set to './' by default.")
-        res_path='./'
+    res_path=sys.argv[4]
     try:
         ignore_t=float(sys.argv[5])
     except:
