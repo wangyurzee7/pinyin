@@ -7,21 +7,24 @@ import math
 import numpy as np
 
 class YazidHmm:
-    def __init__(self,probemis,grams,startprob):
+    def __init__(self,probemis,grams,startprob,untermedfreq):
         self.__eps=1
         for ele in grams:
             if grams[ele]>0:
                 self.__eps=min(self.__eps,1.0/grams[ele])
-        # self.__eps=math.pow(self.__eps,0.5)
+        self.__eps=math.pow(self.__eps,0.5)
         self.__log_eps=math.log(self.__eps)
         
         for ele in grams:
             grams[ele]=math.log(max(grams[ele],self.__eps))
+        for ele in range(len(untermedfreq)):
+            untermedfreq[ele]=math.log(max(untermedfreq[ele],1))
         startprob=list(map(lambda x:math.log(max(x,self.__eps)),startprob))
         
         self.probemis=probemis
         self.grams=grams
         self.startprob=startprob
+        self.untermedfreq=untermedfreq
     def predict(self,vec):
         n=len(vec)
         if not n:
@@ -30,12 +33,12 @@ class YazidHmm:
         for e in self.probemis[vec[0]]:
             dp[0][e]={"val":self.startprob[e],"from":-1}
         
-        neg_inf=self.__log_eps*(n+1)
+        neg_inf=-1e9
         for i in range(1,n):
             for cur_e in self.probemis[vec[i]]:
                 now={"val":neg_inf,"from":-1}
                 for last_e in self.probemis[vec[i-1]]:
-                    tmp=dp[i-1][last_e]["val"]
+                    tmp=dp[i-1][last_e]["val"]-self.untermedfreq[last_e]
                     if (last_e,cur_e) in self.grams:
                         tmp+=self.grams[(last_e,cur_e)]
                     else:

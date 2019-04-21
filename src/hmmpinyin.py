@@ -72,9 +72,13 @@ class HmmPinyin:
         elif predictor=="yazidhmm":
             from .yazidhmm import YazidHmm
             pid2cids=[list(map(lambda c:char2id[c],pinyin2chars[pinyins[pid]])) for pid in range(n_pinyins)]
-            idmat={(char2id[w[0]],char2id[w[1]]):word_freq[w] for w in ProgressBar()(word_freq)}
             idstartprob=[mat["startfreq"][chars[cid]] for cid in range(n_chars)]
-            self.model=YazidHmm(pid2cids,idmat,idstartprob)
+            untermedfreq=[0 for i in range(n_chars)]
+            idmat={}
+            for w in ProgressBar()(word_freq):
+                untermedfreq[char2id[w[0]]]+=word_freq[w]
+                idmat[(char2id[w[0]],char2id[w[1]])]=word_freq[w]
+            self.model=YazidHmm(pid2cids,idmat,idstartprob,untermedfreq)
             print_info("model constructed.")
         else:
             print_info("No predictor called {}.".format(predictor))
