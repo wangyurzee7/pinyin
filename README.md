@@ -93,6 +93,8 @@ $ python3 pre.py [char_file] [map_file] [doc_list] [result_path] [ignore_thresho
 
 ### main.py
 
+在你运行 main 之前，你需要确保 `src/data/model/` 路径下已存在经过 `pre.py` 处理得到的模型。
+
 执行下列指令来运行 main：
 
 ```
@@ -114,6 +116,8 @@ $ python3 main.py [input] [output]
 ```
 $ python3 getacc.py [file1] [file2]
 ```
+
+其中，`file2` 与 `file2` 分别为进行比对的两个文件。
 
 这个程序可以统计你的**单字准确率**（将忽略字数与答案不匹配的句子）及**句子准确率。输出格式如下：
 
@@ -165,7 +169,7 @@ zhongguoxian
 zhongguoxianzaizhengzaigaosufazhan
 中国现在正在高速发展
 zhong guo xian
-中国现
+中国现 // 这是因为输入法会优先不进行额外分字
 wojuedeskr
 我觉得skr
 xihuanchangtiaoraplanqiu
